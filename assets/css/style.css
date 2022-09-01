@@ -15,7 +15,7 @@ body{
 
 #quiz-box{
 	display: flex;
-	align-items: center;
+	justify-content: center;
 }
 
 /* style buttons with purple and border radius */
