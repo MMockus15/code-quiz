@@ -1,6 +1,31 @@
 
 
-
+var questions = [
+	{question: ":",
+	choices: [" ", " ", " ", " "],
+	answer: " ",
+	},
+	{question: " :",
+	choices: [" ", " ", " ", " "],
+	answer: " ",
+	},
+	{question: " :",
+	choices: [" ", " ", " ", " "],
+	answer: " ",
+	},
+	{question: " :",
+	choices: [" ", " ", " ", " "],
+	answer: " ",
+	},
+	{question: " :",
+	choices: [" ", " ", " ", " "],
+	answer: " ",
+	},
+	{question: " :",
+	choices: [" ", " ", " ", " "],
+	answer: " ",
+	},
+];
 
 
 
@@ -12,7 +37,7 @@
 // timer counting down when quiz start is clicked
 // timer to subtract time when there's a wrong answer
 
-// <h1 changes questions every x seconds
+// <h1 changes questions every x seconds- for loop
 // answers/buttons change along with questions
 // dataset for answer buttons 
 // right or wrong pop up using hide element

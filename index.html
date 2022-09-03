@@ -10,18 +10,38 @@
 
 <body>
 	<!-- link to highscores -->
-	<div class= "scores-link"><a href="highscores.html">View highscores</a></div>
-	<!-- div for timer -->
-	<div id="quiz-timer"></div>
+	<div class= "scores-link"><a href="highscores.html" style="color:rgb(62, 15, 106)">View highscores</a></div>
+	<!-- div for timer/ might have to edit to sit in upper right corner -->
+	<div id="quizTimer"></div>
 	<!-- box for quiz box -->
-	<div id="quiz-box">
-	<div class="quiz-start">
+<div id="wrapper">
+	<!-- questions/pull in from local storage JSON -->
+	<div id="startingScreen">
 		<h1>Coding Quiz Challenge</h1>
 		<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score and take away 10 seconds of time! </p>
-		<ul id="answers-buttons"></ul>
+		<button class="start-button">"start</button>
+	</div>
+	<!-- screen after press start / need to hide until start is pressed-->
+	<div class="questionsScreen">
+		<!-- questions to flow thru var = questions -->
+	<div id="quetionsUl">
+		<!-- buttons to add dataset to -->
+		<div class ="buttons">
+		<button id="choicesButtons1">" "</button>
+		<button id="choicesButtons2">" "</button>
+		<button id="choicesButtons3">" "</button>
+		<button id="choicesButtons4">" "</button>
+		</div>
 	</div>
 </div>
+<div class="finalScore">
+	<div id="initialsForm"></div>
+	<button id="submitBtn">"Submit"</button>
+</div>
 
+<!-- JavaScript Link -->
+<script src="./assets/js/highscores.js"></script>
+<script src="./assets/js/mainlogic.js"></script>
 <script src="./assets/js/questions.js"></script>
 
 </body>

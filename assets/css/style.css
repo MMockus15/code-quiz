@@ -5,13 +5,13 @@ body{
 	background: white;
 }
 
-.scores-link{
+/* .scores-link{
 	color: purple;
-}
+} */
 
-.scores-link :hover{
+/* .scores-link :hover{
 	color: orangered;
-}
+} */
 
 #quiz-box{
 	display: flex;
