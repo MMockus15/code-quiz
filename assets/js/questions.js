@@ -1,29 +1,34 @@
+var questions = document.querySelector(".questionsUl");
+
+// add something like this to answer buttons 
+// saveButton.addEventListener("click", function(event) {
+// 	event.preventDefault();
 
 
 var questions = [
-	{question: ":",
-	choices: [" ", " ", " ", " "],
-	answer: " ",
+	{question: "What is NOT a JavaScript Data Type?",
+	choices: ["String", "Object", "inIt", "Boolean"],
+	answer: "inIt",
 	},
-	{question: " :",
-	choices: [" ", " ", " ", " "],
-	answer: " ",
+	{question: "If x = 25 and y = 50, which is true?",
+	choices: ["x = y", "x < y", "x > y ", "x++"],
+	answer: "x < y",
 	},
-	{question: " :",
-	choices: [" ", " ", " ", " "],
-	answer: " ",
+	{question: "An if / else statement is closed within:",
+	choices: ["Curly brackets", "Square brackets", "Quotes", "Parentheses"],
+	answer: "Parenthesis",
 	},
-	{question: " :",
-	choices: [" ", " ", " ", " "],
-	answer: " ",
+	{question: "The console.log is used for:",
+	choices: ["Event Listeners", "Debugging", "For Loops", "Datasets"],
+	answer: "debugging",
 	},
-	{question: " :",
-	choices: [" ", " ", " ", " "],
-	answer: " ",
+	{question: "What is an example of an eventListener triggering event?",
+	choices: ["Array", "Button", "Dataset", "Click"],
+	answer: "click",
 	},
-	{question: " :",
-	choices: [" ", " ", " ", " "],
-	answer: " ",
+	{question: "What are the types of popup boxes available in JavaScript?",
+	choices: ["Alert", "Confirm", "Prompt", "All of the above"],
+	answer: "All of the above",
 	},
 ];
 
