@@ -11,32 +11,44 @@
 <body>
 	<!-- link to highscores -->
 	<div class= "scores-link"><a href="highscores.html" style="color:rgb(62, 15, 106)">View highscores</a></div>
+	
 	<!-- div for timer/ might have to edit to sit in upper right corner -->
 	<div id="quizTimer"></div>
-	<h2>Timer</h2>
-	<!-- box for quiz box -->
-<div id="wrapper">
+
+
+	<!-- starting screen -->
+<section class="starting-screen" id="starting-screen">
 	<!-- questions/pull in from local storage JSON -->
 	<div id="startingScreen">
 		<h1>Coding Quiz Challenge</h1>
 		<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score and take away 10 seconds of time! </p>
-		<button class="start-button">"start</button>
+		<button class="button" id="start_button">Start Quiz</button>
 	</div>
+
 	<!-- screen after press start / need to hide until start is pressed-->
-	<div class="questionsScreen">
+	<section class="questions-screen" id="questions-screen"></section>
+	<div class="questions-body">
+
+	</div>
 		<!-- questions to flow thru var = questions -->
 	<div class="quetionsUl">
-		<!-- buttons to add dataset to -->
-		<div class ="buttons">
-		<button id="choicesButtons1">" "</button>
-		<button id="choicesButtons2">" "</button>
-		<button id="choicesButtons3">" "</button>
-		<button id="choicesButtons4">" "</button>
-		</div>
+		<li><button class="choicesButtons" id="button-1" value="a">Answer1</button></li>
+		<li><button class="choicesButtons" id="button-2" value="b">Answer2</button></li>
+		<li><button class="choicesButtons" id="button-3" value="c">Answer3</button></li>
+		<li><button class="choicesButtons" id="button-4" value="d">Answer4</button></li>
 	</div>
-</div>
+
+	<!-- checks answers after eah question -->
+	<div id="answer-check">
+		<p>correct or Wrong</p>
+	</div>
+
+	<!-- final scores enter initals page -->
 <div class="finalScore">
-	<div id="initialsForm"></div>
+	<p id="initialsForm">Your final score is: </p>
+	<p>Enter initals</p>
+	<input id="initials">
+	</div>
 	<button id="submitBtn">"Submit"</button>
 </div>
 

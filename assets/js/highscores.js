@@ -8,13 +8,14 @@ var goBack = document.querySelector("#goBack");
 
 
 // retrieves all scores from local storage
+var allScores
 
 
 // event listener to clear score
-clear.addEventListener("click", function () {
+clear.addEventListener("click", reset); {
 	localStorage.clear();
 	location.reload();
-});
+};
 
 // event listener click go back button
 goBack.addEventListener("click", function () {
