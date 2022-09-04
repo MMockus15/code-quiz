@@ -13,7 +13,7 @@
 	<div class= "scores-link"><a href="highscores.html" style="color:rgb(62, 15, 106)">View highscores</a></div>
 	
 	<!-- div for timer/ might have to edit to sit in upper right corner -->
-	<div id="quizTimer"></div>
+	<div class="quizTimer" id="quizTimer"></div>
 
 
 	<!-- starting screen -->
@@ -24,6 +24,7 @@
 		<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score and take away 10 seconds of time! </p>
 		<button class="button" id="start_button">Start Quiz</button>
 	</div>
+	</section>
 
 	<!-- screen after press start / need to hide until start is pressed-->
 	<section class="questions-screen" id="questions-screen"></section>
@@ -31,7 +32,7 @@
 
 	</div>
 		<!-- questions to flow thru var = questions -->
-	<div class="quetionsUl">
+	<div class="quetionsUl" id="questionsUl">
 		<li><button class="choicesButtons" id="button-1" value="a">Answer1</button></li>
 		<li><button class="choicesButtons" id="button-2" value="b">Answer2</button></li>
 		<li><button class="choicesButtons" id="button-3" value="c">Answer3</button></li>
@@ -39,12 +40,12 @@
 	</div>
 
 	<!-- checks answers after eah question -->
-	<div id="answer-check">
+	<div class="answer-check" id="answer-check">
 		<p>correct or Wrong</p>
 	</div>
 
 	<!-- final scores enter initals page -->
-<div class="finalScore">
+<div class="finalScore" id="finalScore">
 	<p id="initialsForm">Your final score is: </p>
 	<p>Enter initals</p>
 	<input id="initials">

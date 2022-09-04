@@ -4,6 +4,11 @@ var timerElement = document.querySelector("#quizTimer");
 
 
 var timerCount = 75;
+var index = 0;
+var question = document.querySelectorAll(".choiceButtons");
+var totalScore = 0;
+var score = 0;
+var quizQuestions = 0;
 
 
 
@@ -26,11 +31,18 @@ function startTimer() {
 	  }
 	}, 1000);
 
-	Render(quetionsUl);
+	render(quetionsUl);
 }
 
 function render(questionsUl) {
 	
+	
+	// for loop thru questions
+	question++;
+	
+	for (var i = 0; i < question.length; i++) {
+	  question[i].setAttribute("style", "color: purple; font-size: 30px;");
+	}
 }
 	// starts timer when quiz start button is selected
 	// when wrong answer take off 10 seconds
