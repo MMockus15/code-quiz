@@ -24,8 +24,13 @@ function startTimer() {
 	  } else {
 		clearInterval(timerInterval);
 	  }
-	}, 1000); }
+	}, 1000);
 
+	Render(quetionsUl);
+}
 
+function render(questionsUl) {
+	
+}
 	// starts timer when quiz start button is selected
 	// when wrong answer take off 10 seconds
