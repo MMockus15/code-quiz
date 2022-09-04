@@ -1,6 +1,6 @@
 var questions = document.querySelector(".questionsUl");
 
-// add something like this to answer buttons 
+// add something like this to answer buttons to save score to dataset?
 // saveButton.addEventListener("click", function(event) {
 // 	event.preventDefault();
 
@@ -38,7 +38,7 @@ var questions = [
 
 
 
-// view highscores: event listener for click to highscores page/ link highscores page
+
 // timer counting down when quiz start is clicked
 // timer to subtract time when there's a wrong answer
 
