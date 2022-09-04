@@ -36,21 +36,13 @@
 		},
 	];
 	
-	var question = document.querySelectorAll(".choiceButtons");
-	var totalScore = 0;
-	var score = 0;
-	var quizQuestions = 0;
 	
 	
-	// for loop thru questions
-	question++;
 	
-	for (var i = 0; i < question.length; i++) {
-	  question[i].setAttribute("style", "color: purple; font-size: 30px;");
-	}
+	
 
 
-	
+
 	// timer counting down when quiz start is clicked
 	// timer to subtract time when there's a wrong answer
 
