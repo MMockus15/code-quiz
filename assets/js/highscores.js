@@ -12,12 +12,12 @@ var allScores
 
 
 // event listener to clear score
-clear.addEventListener("click", reset); {
-	localStorage.clear();
-	location.reload();
-};
+// clear.addEventListener("click", reset); {
+// 	localStorage.clear();
+// 	location.reload();
+// };
 
 // event listener click go back button
-goBack.addEventListener("click", function () {
-	window.location.replace("./index.html")
-});
+// goBack.addEventListener("click", function () {
+// 	window.location.replace("./index.html")
+// });

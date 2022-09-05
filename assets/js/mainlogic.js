@@ -33,38 +33,63 @@ startButton.addEventListener("click", startGame);
 
 // start game function
 function startGame () {
-	startTimer();
+    startTimer();
 }
 
 function startTimer() {
-	var timerInterval = setInterval(function () {
-	  if (timerCount >= 0) {
-		timerElement.textContent = timerCount + " seconds left";
-		timerCount--;
-	  } else {
-		clearInterval(timerInterval);
-	  }
-	}, 1000);
+    var timerInterval = setInterval(function () {
+      if (timerCount >= 0) {
+        timerElement.textContent = timerCount + " seconds left";
+        timerCount--;
+      } else {
+        clearInterval(timerInterval);
+      }
+    }, 1000);
 
-	// render(quetionsUl);
+    questionsStarting();
+    // render(quetionsUl);
 }
 
 function questionsStarting() {
-	quizQuestions.innerHTML = "";
-	var questionsContainer = quizQuestions [quizQuestionsEmpty];
-	var questionsUl = document.createElement;
-	// for loop thru questions
-	for (var i = 0; i < quizQuestions.length; i++) {
-		quizQuestions[i].setAttribute("style", "color: purple; font-size: 30px;");
-	}
-	var answersBtns = document.createElement(choicesButtons);
-	choicesButtons.eventListener("click", answerCheck);
+    // first get current question object from array
+    var questionsContainer = quizQuestions[quizQuestionsEmpty];
+    // update title with current question
+    var questionsUl = document.getElementById('questionsUl');
+
+    questionsUl.textContent = questionsContainer.title;
+    // clear out any old question choices ------- LEARNING ASSITANT HELPING with pseudocoding
+    quizQuestions.innerHTML = "";
+    // for loop thru questions
+    for (var i = 0; i < questionsContainer.choices.length; i++) {
+        // create a button for each choice
+            // var choice = quizQuestions.choices[i];
+            // var answersBtns = document.createElement(choicesButtons);
+            // answersBtns.setAttribute('class', 'choice')
+            // answersBtns.setAttribute('class', 'choice')
+
+            answersBtns.textContent = i + 1 + '. ' + choice;
+
+
+        // display on the page
+            quizQUestions.appendChild(answersBtns);
+    }
+    
+    
 }
 
+// I think this needs to be referenced at the top =========> choicesButtons.eventListener("click", answerCheck);
 
-	
+    
 
 
-	// starts timer when quiz start button is selected
-	// when wrong answer take off 10 seconds
-question++;
+    // starts timer when quiz start button is selected
+    // when wrong answer take off 10 seconds
+// question++;
+
+// here is how to console.log stuff
+
+// function marla() {
+// 	return console.log("marla is here")
+//    };
+
+//    marla();
