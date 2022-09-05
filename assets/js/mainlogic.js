@@ -102,7 +102,13 @@ function getQuestion() {
 	  // display on the page
 	  answerChoiceDiv.appendChild(choiceBtn);
 	}
+	questionsIndexCounter++;
+	handleUserAnswer();
+};
 
+
+
+function handleUserAnswer () {
 	var choiceBtns = document.querySelectorAll(".choice");
 	for (var i = 0; i < choiceBtns.length; i++) {
 		choiceBtns[i].addEventListener("click", function (event) {
@@ -120,37 +126,39 @@ function getQuestion() {
 		// hide currentQuestions text/remove child 
 		
 		questionTextDiv.removeChild(questionTextDiv.firstChild);
-		
 		while (questionTextDiv.hasChildNodes()) {
 			questionTextDiv.removeChild(questionTextDiv.firstChild);
-			// display next question
+			// display next question (could call above function if seperate it off
 		}
-		
-		getQuestion();
-		// else if the text inside the button clicked is the wrong answer
-		} else {
+		// need code display next question
+		if (currentQuestion = quizQuestions[quizQuestions.length - 1]){
+		}
+		// display scoreboard
+	} else {
+			getQuestion();
+
+	} else { 
 			console.log("oops")
 	
 
+		
+			questionTextDiv.removeChild(questionTextDiv.firstChild);
 		while (questionTextDiv.hasChildNodes()) {
 			questionTextDiv.removeChild(questionTextDiv.firstChild);
 		}
-		while (questionTextDiv.hasChildNodes()) {
-			questionTextDiv.removeChild(questionTextDiv.firstChild);
-		}
+		if (currentQuestion = quizQuestions[quizQuestions.length - 1]){
 			// otherwise textContent of user-selected choice button is != currentQuestion
 			// take away 10 seconds off the clock
 			// timerCount = 
 			// hide currentQuestions text 
-			// display next question})
 	
 		}
 		});
 	}
 	// what to do if youre on your last question, might have to put in a different function/ then it can go to scoreboard screen else loop back to game
-	if (currentQuestion = quizQuestions[quizQuestions.length - 1]){
-}
-}
+};
+
+// very last thing what happens when timer runs out?
 
 
 
