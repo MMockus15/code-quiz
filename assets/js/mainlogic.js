@@ -10,7 +10,7 @@ var checkAnswer = document.getElementById("answer-check");
 var questionsUl = document.getElementById("questionsUl");
 var choicesButtons = document.querySelectorAll(".choicesButtons");
 
-var timerCount = 75;
+var timerCount = 60;
 var index = 0;
 var totalScore = 0;
 var score = 0;
@@ -68,7 +68,6 @@ function startTimer() {
   }, 1000);
 
   getQuestion();
-  // render(quetionsUl);
 }
 
 function getQuestion() {
@@ -98,6 +97,23 @@ function getQuestion() {
 	}
 };
 
+// function being tied to event listener checking clicked answer
+function results(e) {
+	if (e.target.value !== quizQuestions[quizQuestionsEmpty].answer) {
+		timerCount -= 10;
+		timerElement.textContent = timerCount;
+	}
+
+	// increase quetions index by 1
+	quizQuestionsEmpty++;
+
+	// if we have more questions to ask / if no more questions game is over 
+	if (time === 0 || quizQuestionsEmpty === quizQuestions.length) {
+		quizOver();
+	} else {
+		displayQuestion()
+	}
+};
 
 
 
@@ -105,26 +121,3 @@ function getQuestion() {
 
 
 
-//   for (var i = 0; i < 6; i++) {
-//     var choice = quizQuestions[i].choices[i];
-    
-//     var answersBtns = document.createElement("button");
-//     answersBtns.textContent = i + 1 + ". " + choice;
-
-//     console.log(choicesButtons);
-
-//     answersBtns.eventListener("click", answerCheck);
-
-//     // display on the page
-//     questionsContainer.appendChild(answersBtns);
-//   }
-//   questionsContainer.append(answersBtns, questionsUl);
-// }
-
-// function answerCheck() {
-//   console.log("hello");
-// }
-
-// starts timer when quiz start button is selected
-// when wrong answer take off 10 seconds
-// question++
