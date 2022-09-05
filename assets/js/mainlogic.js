@@ -67,10 +67,10 @@ function startTimer() {
     }
   }, 1000);
 
-  getQuestion();
+  getNextQuestion();
 }
 
-function getQuestion() {
+function getNextQuestion() {
 	// take current screen (start or a questions and hide it also display next screen)
 	// if its the starting sceen thats visable we want it to take section class starting-screen and hide it 
 	if (startScreen.classList.includes !== "hidden") {
@@ -135,7 +135,7 @@ function handleUserAnswer () {
 		}
 		// display scoreboard
 	} else {
-			getQuestion();
+			getNextQuestion();
 
 	} else { 
 			console.log("oops")
