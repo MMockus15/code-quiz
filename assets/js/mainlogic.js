@@ -7,14 +7,14 @@ var timerElement = document.querySelector("#quizTimer");
 var questionsContainer = document.getElementById("questions-screen");
 var checkAnswer = document.getElementById("answer-check");
 // var question = quizQuestions[index].question;
-var questionsUl = document.getElementById("questionsUl");
-var choicesButtons = document.querySelectorAll(".choicesButtons");
+var answerChoiceDiv = document.querySelector(".answer-choices");
+var questionTextDiv = document.querySelector(".question-text");
+
 
 var timerCount = 60;
 var index = 0;
-var totalScore = 0;
-var score = 0;
-var quizQuestionsEmpty = 0;
+var userScore = 0;
+var questionsIndexCounter = 0;
 
 var quizQuestions = [
   {
@@ -71,49 +71,88 @@ function startTimer() {
 }
 
 function getQuestion() {
+	// take current screen (start or a questions and hide it also display next screen)
+	// if its the starting sceen thats visable we want it to take section class starting-screen and hide it 
+	if (startScreen.classList.includes !== "hidden") {
+		startScreen.classList.add("hidden");
+	}
+
+	// clear out any old question choices
+	// questionsContainer.textContent = "";
+
 	// get current question object from array
-	var currentQuestion = quizQuestions[quizQuestionsEmpty];
+	var currentQuestion = quizQuestions[questionsIndexCounter];
   
 	// update title with current question
-	var titleEl = document.getElementById('questionsUl');
-	titleEl.textContent = currentQuestion.title;
+	var questionH3 = document.createElement("h3");
+	questionH3.textContent = currentQuestion.question;
+	questionTextDiv.appendChild(questionH3);
   
-	console.log(questionsContainer);
-	// clear out any old question choices
-	questionsContainer.innerHTML = '';
-  
-	// loop over choices
+
+	// looping over answer choices and turning each one into a button
 	for (var i = 0; i < currentQuestion.choices.length; i++) {
 	  // create new button for each choice
 	  var choice = currentQuestion.choices[i];
-	  var choiceNode = document.createElement('button');
-	  choiceNode.setAttribute('class', 'choice');
-	  choiceNode.setAttribute('value', choice);
+	  var choiceBtn = document.createElement('button');
+	  choiceBtn.setAttribute('class', 'choice');
+	  choiceBtn.setAttribute('value', choice);
   
-	  choiceNode.textContent = i + 1 + '. ' + choice;
+	  choiceBtn.textContent = choice;
   
 	  // display on the page
-	  questionsContainer.appendChild(choiceNode);
-	}
-};
-
-// function being tied to event listener checking clicked answer
-function results(e) {
-	if (e.target.value !== quizQuestions[quizQuestionsEmpty].answer) {
-		timerCount -= 10;
-		timerElement.textContent = timerCount;
+	  answerChoiceDiv.appendChild(choiceBtn);
 	}
 
-	// increase quetions index by 1
-	quizQuestionsEmpty++;
+	var choiceBtns = document.querySelectorAll(".choice");
+	for (var i = 0; i < choiceBtns.length; i++) {
+		choiceBtns[i].addEventListener("click", function (event) {
+		// event listeners on our choicebtn elements - on click event listeners 
+		// if the textContent of user sected choicebtn is the same as the answer value currentQuestion.answer	
 
-	// if we have more questions to ask / if no more questions game is over 
-	if (time === 0 || quizQuestionsEmpty === quizQuestions.length) {
-		quizOver();
-	} else {
-		displayQuestion()
+		// if the text inside the button that was clicked is the right answer
+			if (event.target.textContent === currentQuestion.answer) {
+		// add to users score
+		userScore = userScore + 10;
+		localStorage.setItem("userScore", userScore);
+		// alert user they were correct/ element appended to the dom/create element/<p>
+
+		
+		// hide currentQuestions text/remove child 
+		
+		questionTextDiv.removeChild(questionTextDiv.firstChild);
+		
+		while (questionTextDiv.hasChildNodes()) {
+			questionTextDiv.removeChild(questionTextDiv.firstChild);
+			// display next question
+		}
+		
+		getQuestion();
+		// else if the text inside the button clicked is the wrong answer
+		} else {
+			console.log("oops")
+	
+
+		while (questionTextDiv.hasChildNodes()) {
+			questionTextDiv.removeChild(questionTextDiv.firstChild);
+		}
+		while (questionTextDiv.hasChildNodes()) {
+			questionTextDiv.removeChild(questionTextDiv.firstChild);
+		}
+			// otherwise textContent of user-selected choice button is != currentQuestion
+			// take away 10 seconds off the clock
+			// timerCount = 
+			// hide currentQuestions text 
+			// display next question})
+	
+		}
+		});
 	}
-};
+	// what to do if youre on your last question, might have to put in a different function/ then it can go to scoreboard screen else loop back to game
+	if (currentQuestion = quizQuestions[quizQuestions.length - 1]){
+}
+}
+
+
 
 
 
