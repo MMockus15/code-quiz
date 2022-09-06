@@ -111,7 +111,7 @@ function getNextQuestion() {
 function handleUserAnswer () {
 	var choiceBtns = document.querySelectorAll(".choice");
 	for (var i = 0; i < choiceBtns.length; i++) {
-		choiceBtns[i].addEventListener("click", function (event) {
+		choiceBtns[i].addEventListener("click", function (event)) {
 		// event listeners on our choicebtn elements - on click event listeners 
 		// if the textContent of user sected choicebtn is the same as the answer value currentQuestion.answer	
 
@@ -131,14 +131,14 @@ function handleUserAnswer () {
 			// display next question (could call above function if seperate it off
 		}
 		// need code display next question
-		if (currentQuestion = quizQuestions[quizQuestions.length - 1]){
+		if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 		}
 		// display scoreboard
 	} else {
 			getNextQuestion();
-
-	} else { 
-			console.log("oops")
+	}
+}
+	else { 
 	
 
 		
@@ -146,17 +146,19 @@ function handleUserAnswer () {
 		while (questionTextDiv.hasChildNodes()) {
 			questionTextDiv.removeChild(questionTextDiv.firstChild);
 		}
-		if (currentQuestion = quizQuestions[quizQuestions.length - 1]){
+		if ((currentQuestion = quizQuestions[quizQuestions.length - 1])){
 			// otherwise textContent of user-selected choice button is != currentQuestion
 			// take away 10 seconds off the clock
 			// timerCount = 
 			// hide currentQuestions text 
-	
+		} else {
+			getNextQuestion();
 		}
-		});
-	}
+		}
+		};
+	};
 	// what to do if youre on your last question, might have to put in a different function/ then it can go to scoreboard screen else loop back to game
-};
+;
 
 // very last thing what happens when timer runs out?
 
