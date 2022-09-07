@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- css style sheet -->
 	<link rel="stylesheet" href="./assets/css/style.css" />
 	<title>Code Quiz</title>
 </head>
@@ -12,30 +13,27 @@
 	<!-- link to highscores -->
 	<div class= "scores-link"><a href="highscores.html" style="color:rgb(62, 15, 106)">View highscores</a></div>
 	
-	<!-- div for timer/ might have to edit to sit in upper right corner -->
+	<!-- div for timer -->
 	<div class="quizTimer" id="quizTimer"></div>
 
 
-	<!-- starting screen -->
+	<!-- starting screen sction-->
 <section class="starting-screen" id="starting-screen">
-	<!-- questions/pull in from local storage JSON -->
-	<div id="startingScreen">
 		<h1>Coding Quiz Challenge</h1>
 		<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score and take away 10 seconds of time! </p>
 		<button class="button" id="start_button">Start Quiz</button>
-	</div>
 	</section>
 
-	<!-- screen after press start / need to hide until start is pressed-->
+	<!-- questions screen / after press start -->
 	<section class="questions-screen" id="questions-screen">
 		<div class="question-text"></div>
 		<h3 id="questionH3"></h3>
-		<!-- questions to flow thru var = questions -->
+		<!-- questions object -->
 	<div class="answer-choices" id="answer-choices">
 	</div>
 </section>
 
-	<!-- checks answers after eah question -->
+	<!-- checks answers after each question /displays correct or wrong -->
 	<div class="answer-check" id="answer-check">
 		<p>Correct or Wrong</p>
 	</div>
@@ -53,6 +51,12 @@
 </form>
 <p id="log"></p>
 
+<!-- footer -->
+<footer>
+	<h4>Made with 💗 by Marla Mockus</h4>
+</footer>
+
+
 <!-- JavaScript Link -->
 <script src="./assets/js/highscores.js"></script>
 <script src="./assets/js/mainlogic.js"></script>
@@ -60,16 +64,3 @@
 </body>
 </html>
 
-<!-- header with highscore link and timer / or top left view highscores top right timer-->
-<!-- <h1> quiz title -->
-<!-- <p> paragraph explinaing how to answer incorrect answer is enalty on time</p> -->
-<!-- id button to start quiz and timer -->
-<!-- <body> <div> for questions -->
-<!-- 4 answer buttons -->
-<!-- wrong! or Right! -->
-
-<!-- <h1> all done here is your final score -->
-<!-- form to enter initals -->
-<!-- submit button that pushes final score to highscores tab -->
-<!-- shows initals and score -->
-<!-- go back and clear highscore button -->

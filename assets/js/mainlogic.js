@@ -144,9 +144,9 @@ function handleUserAnswer(currentQuestion) {
 				// display next question
 				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 				}
-				//   document.getElementById("#finalScore").innerHTML = "Score: " + userScore;
+				//   document.getElementById("#currentScore").innerHTML = "Score: " + userScore;
 				// display scoreboard
-				document.getElementById("currentScore").innerHTML = "Score: " +window.location.href;
+				// document.getElementById("currentScore").innerHTML = "Score: " +window.location.href;
 			} else {
 				getNextQuestion();
 			}
