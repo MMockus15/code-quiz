@@ -1,6 +1,6 @@
 // start button variables
 var startScreen = document.querySelector("#starting-screen");
-var startButton = document.querySelector(".button");
+var startButton = document.querySelector("#start_button");
 var timerElement = document.querySelector("#quizTimer");
 
 // questions variables
@@ -66,9 +66,9 @@ startButton.addEventListener("click", startGame);
 function startGame() {
 	startTimer();
 }
-
+var timerInterval
 function startTimer() {
-  var timerInterval = setInterval(function () {
+timerInterval = setInterval(function () {
     if (timerCount >= 0) {
       timerElement.textContent = timerCount + " seconds left";
       timerCount--;
@@ -156,7 +156,7 @@ function handleUserAnswer(currentQuestion) {
 				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 				}
 				
-				if(questionsIndexCounter = quizQuestions.length){
+				if(questionsIndexCounter === quizQuestions.length){
 				gameOver();
 				}
 			} else {
@@ -179,24 +179,28 @@ function currentScore () {
 }
 
 function gameOver () {
-	if (currentQuestion = quizQuestions[quizQuestions.length]) {
-		timerCount = 0
-	}
+	clearInterval(timerInterval);
+	timerElement.style.display = "none";
 	if (initialsForm.classList.contains("hidden")) {
 		initialsForm.classList.remove("hidden");
 	  }
+	  saveUserScores();
  }
+
+document.querySelector("#submitButton").addEventListener("click", saveUserScores)
 
 function saveUserScores (event) {
 	event.preventDefault();
 	var inputValue = initialsText.value
 	console.log(inputValue, userScore)
-	// stores userscore to local storage hen submitting initials
-	// localStorage.setItem("userScore", JSON. stringify(userScore));
+	localStorage.getItem("highscores", JSON.stringify(highscores))
+
+	window.location = "highscores.html"
 	
+	// local storage . get item turn onto a string stringify jason . parse put inputvalue - navigate to highscores page 
 };
 
-form.addEventListener("submit", saveUserScores);
+// form.addEventListener("submit", saveUserScores);
 
 
 
