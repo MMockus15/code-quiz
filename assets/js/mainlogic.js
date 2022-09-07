@@ -13,7 +13,7 @@ var questionTextDiv = document.querySelector(".question-text");
 var initials = document.querySelector("#initials");
 var submitScoreBtn = document.querySelector('#submitBtn');
 var currentScoreDiv = document.querySelector(".currentScore");
-const form = document.getElementById("initialsForm");
+var initialsForm = document.querySelector(".initialsForm");
 var initialsText = document.querySelector(".initialsText")
 
 
@@ -59,9 +59,15 @@ var quizQuestions = [
 // click start button and starts game
 startButton.addEventListener("click", startGame);
 
+
+
+
 // start game function
 function startGame() {
-  startTimer();
+	startTimer();
+	if (initialsForm.classList.includes !== "hidden") {
+	  initialsForm.classList.add("hidden");
+	}
 }
 
 function startTimer() {
@@ -79,13 +85,12 @@ function startTimer() {
 
 
 function getNextQuestion() {
-	// add case where if were at the end it terminates
+	// hides questions container after last question
 	if (questionsIndexCounter === 6) {
 		questionsContainer.classList.add("hidden");
 		return
 	};
-	// take current screen (start or a questions and hide it also display next screen)
-	// if its the starting sceen thats visable we want it to take section class starting-screen and hide it 
+	// hides start screen when start quiz is pressed
 	if (startScreen.classList.includes !== "hidden") {
 		startScreen.classList.add("hidden");
 	}
@@ -104,6 +109,7 @@ function getNextQuestion() {
 	
 	// empties content of answer choice div
 	answerChoiceDiv.innerHTML = "";
+
 	// looping over answer choices and turning each one into a button
 	for (var i = 0; i < currentQuestion.choices.length; i++) {
 		
@@ -127,11 +133,10 @@ function getNextQuestion() {
 
 function handleUserAnswer(currentQuestion) {
 	
+	// moving thru choice buttons and creating event listener for each one
 	var choiceBtns = document.querySelectorAll(".choice");
 	for (var i = 0; i < choiceBtns.length; i++) {
 		choiceBtns[i].addEventListener("click", function (event) {
-			// event listeners on our choicebtn elements - on click event listeners
-			// if the textContent of user sected choicebtn is the same as the answer value currentQuestion.answer
 			
 			// if the text inside the button that was clicked is the right answer
 			console.log(event.target.textContent);
@@ -176,13 +181,13 @@ function currentScore () {
 
 
 
-function gameOver() {
-	// game over will ppend last page
-	questionTextDiv.innerHTML = "";
-	answerChoiceDiv.innerHTML = "";
-	timerElement.innerHTML = "";
+// function gameOver() {
+// 	// game over will ppend last page
+// 	questionTextDiv.innerHTML = "";
+// 	answerChoiceDiv.innerHTML = "";
+// 	timerElement.innerHTML = "";
 	
-};
+// };
 
 function saveUserScores (event) {
 	event.preventDefault();
