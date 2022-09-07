@@ -9,7 +9,7 @@ var goBack = document.querySelector("#goBack");
 
 // retrieves all scores from local storage
 function renderHighscore() {
-	$(".highscores-list").empty();
+	document.querySelector(".highscores-list").empty();
 	var userScoreArray = localStorage.getItem("userScoresObject");
 	console.log(userScoreArray);
 	var render = JSON.parse(userScoreArray);
@@ -19,18 +19,16 @@ function renderHighscore() {
 		eachScore.text = userScoreArray[i]
 		var renderEach = $("<ul>").append(eachScore);
 	}
-}
+};
 
-$(document).click("nav-link", function (e) {
-	renderHighscore();
-});
+
 
 
 // event listener to clear score
-clearScores.addEventListener("click", reset); {
+clearScores.addEventListener("click", function() {
 	localStorage.clear();
 	location.reload();
-};
+});
 
 // event listener click go back button
 goBack.addEventListener("click", function () {

@@ -12,6 +12,9 @@ var questionTextDiv = document.querySelector(".question-text");
 // submit score buttons
 var initials = document.querySelector("#initials");
 var submitScoreBtn = document.querySelector('#submitBtn');
+var currentScoreDiv = document.querySelector(".currentScore");
+const form = document.getElementById("initialsForm");
+var initialsText = document.querySelector(".initialsText")
 
 
 var timerCount = 60;
@@ -34,16 +37,16 @@ var quizQuestions = [
   {
     question: "An if / else statement is closed within:",
     choices: ["Curly brackets", "Square brackets", "Quotes", "Parentheses"],
-    answer: "Parenthesis",
+    answer: "Parentheses",
   },
   {
     question: "The console.log is used for:",
-    choices: ["Event Listeners", "Debugging", "For Loops", "Datasets"],
+    choices: ["Event Listeners", "debugging", "For Loops", "Datasets"],
     answer: "debugging",
   },
   {
     question: "What is an example of an eventListener triggering event?",
-    choices: ["Array", "Button", "Dataset", "Click"],
+    choices: ["Array", "Button", "Dataset", "click"],
     answer: "click",
   },
   {
@@ -77,7 +80,8 @@ function startTimer() {
 
 function getNextQuestion() {
 	// add case where if were at the end it terminates
-	if (currentQuestion === 6) {
+	if (questionsIndexCounter === 6) {
+		questionsContainer.classList.add("hidden");
 		return
 	};
 	// take current screen (start or a questions and hide it also display next screen)
@@ -114,8 +118,9 @@ function getNextQuestion() {
 		// display on the page
 		answerChoiceDiv.appendChild(choiceBtn);
 	}
-	questionsIndexCounter++;
+	currentScore ();
 	handleUserAnswer(currentQuestion);
+	questionsIndexCounter++;
 };
 
 
@@ -129,11 +134,13 @@ function handleUserAnswer(currentQuestion) {
 			// if the textContent of user sected choicebtn is the same as the answer value currentQuestion.answer
 			
 			// if the text inside the button that was clicked is the right answer
+			console.log(event.target.textContent);
 			if (event.target.textContent === currentQuestion.answer) {
 				// add to users score
-				userScore = userScore + 10;
-				localStorage.setItem("userScore", userScore);
-				// alert user they were correct/ element appended to the dom/create element/<p>
+				userScore += 10;
+				console.log(userScore);
+				currentScore();
+				alert("Correct");
 				
 				// hide currentQuestions text/remove child
 				questionTextDiv.removeChild(questionTextDiv.firstChild);
@@ -144,12 +151,12 @@ function handleUserAnswer(currentQuestion) {
 				// display next question
 				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 				}
-				//   document.getElementById("#currentScore").innerHTML = "Score: " + userScore;
 				// display scoreboard
-				// document.getElementById("currentScore").innerHTML = "Score: " +window.location.href;
 			} else {
-				getNextQuestion();
-			}
+				timerCount -= 10;
+				alert("Wrong");
+			} 
+			getNextQuestion();
 		});
 	}
 }
@@ -157,7 +164,8 @@ function handleUserAnswer(currentQuestion) {
 
 
 function currentScore () {
-	currentScore.textContent = userScore;
+	console.log(userScore);
+	currentScoreDiv.textContent = "Score: " + userScore;
 	localStorage.setItem
 	("userScore", userScore);
 }
@@ -176,26 +184,16 @@ function gameOver() {
 	
 };
 
-function saveUserScores () {
+function saveUserScores (event) {
+	event.preventDefault();
+	var inputValue = initialsText.value
+	console.log(inputValue, userScore)
 	// stores userscore to local storage hen submitting initials
-	localStorage.setItem("userScore", JSON. stringify(userScore));
-	var userInitals = prompt("Enter your initals to keep highscore!")
-	var newScore = {score, initals};
-
-	form.addEventListener("submit", logSubmit);
+	// localStorage.setItem("userScore", JSON. stringify(userScore));
 	
-	function submitInitials (event) {
-	log.textContent = "form submitted!";
-	event.preventDefult();
-	
-	const form = document.getElementById("initialsForm");
-	const log = document.getElementById("log");
-	
-	localStorage.setItem("initials", JSON.stringify(initials));
-	};
-
 };
 
+form.addEventListener("submit", saveUserScores);
 
 
 
