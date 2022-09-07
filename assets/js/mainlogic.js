@@ -15,6 +15,8 @@ var submitScoreBtn = document.querySelector('#submitBtn');
 var currentScoreDiv = document.querySelector(".currentScore");
 var initialsForm = document.querySelector(".initialsForm");
 var initialsText = document.querySelector(".initialsText");
+var highscores = JSON.parse(localStorage.getItem("highscores"))
+
 
 
 var timerCount = 60;
@@ -184,16 +186,15 @@ function gameOver () {
 	if (initialsForm.classList.contains("hidden")) {
 		initialsForm.classList.remove("hidden");
 	  }
-	  saveUserScores();
  }
 
 document.querySelector("#submitButton").addEventListener("click", saveUserScores)
 
 function saveUserScores (event) {
 	event.preventDefault();
-	var inputValue = initialsText.value
-	console.log(inputValue, userScore)
-	localStorage.getItem("highscores", JSON.stringify(highscores))
+	var inputInitials = initialsText.value
+	console.log(inputInitials, userScore)
+	localStorage.setItem("highscores", JSON.stringify(highscores));
 
 	window.location = "highscores.html"
 	
