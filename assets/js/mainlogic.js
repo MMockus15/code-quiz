@@ -74,37 +74,38 @@ function startTimer() {
   getNextQuestion();
 }
 
+
 function getNextQuestion() {
 	// take current screen (start or a questions and hide it also display next screen)
 	// if its the starting sceen thats visable we want it to take section class starting-screen and hide it 
 	if (startScreen.classList.includes !== "hidden") {
 		startScreen.classList.add("hidden");
 	}
-
+	
 	// clear out any old question choices
 	questionsIndexCounter.textContent = "";
-
+	
 	// get current question object from array
 	var currentQuestion = quizQuestions[questionsIndexCounter];
-  
+	
 	// update title with current question
 	var questionH3 = document.createElement("h3");
 	questionH3.textContent = currentQuestion.question;
 	questionTextDiv.appendChild(questionH3);
-  
-
+	
+	
 	// looping over answer choices and turning each one into a button
 	for (var i = 0; i < currentQuestion.choices.length; i++) {
-	  // create new button for each choice
-	  var choice = currentQuestion.choices[i];
-	  var choiceBtn = document.createElement('button');
-	  choiceBtn.setAttribute('class', 'choice');
-	  choiceBtn.setAttribute('value', choice);
-  
-	  choiceBtn.textContent = choice;
-  
-	  // display on the page
-	  answerChoiceDiv.appendChild(choiceBtn);
+		// create new button for each choice
+		var choice = currentQuestion.choices[i];
+		var choiceBtn = document.createElement('button');
+		choiceBtn.setAttribute('class', 'choice');
+		choiceBtn.setAttribute('value', choice);
+		
+		choiceBtn.textContent = choice;
+		
+		// display on the page
+		answerChoiceDiv.appendChild(choiceBtn);
 	}
 	questionsIndexCounter++;
 	handleUserAnswer(currentQuestion);
@@ -113,41 +114,48 @@ function getNextQuestion() {
 
 
 function handleUserAnswer(currentQuestion) {
-
+	
 	var choiceBtns = document.querySelectorAll(".choice");
 	for (var i = 0; i < choiceBtns.length; i++) {
-	  choiceBtns[i].addEventListener("click", function (event) {
-		// event listeners on our choicebtn elements - on click event listeners
-		// if the textContent of user sected choicebtn is the same as the answer value currentQuestion.answer
-  
-		// if the text inside the button that was clicked is the right answer
-		if (event.target.textContent === currentQuestion.answer) {
-		  // add to users score
-		  userScore = userScore + 10;
-		  localStorage.setItem("userScore", userScore);
-		  // alert user they were correct/ element appended to the dom/create element/<p>
-  
-		  // hide currentQuestions text/remove child
-  
-		  questionTextDiv.removeChild(questionTextDiv.firstChild);
-		  while (questionTextDiv.hasChildNodes()) {
-			questionTextDiv.removeChild(questionTextDiv.firstChild);
-			// display next question (could call above function if seperate it off
-		  }
-		  // need code display next question
-		  if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
-		  }
-		//   document.getElementById("#finalScore").innerHTML = "Score: " + userScore;
-		  // display scoreboard
-		} else {
-		  getNextQuestion();
-		}
-	  });
+		choiceBtns[i].addEventListener("click", function (event) {
+			// event listeners on our choicebtn elements - on click event listeners
+			// if the textContent of user sected choicebtn is the same as the answer value currentQuestion.answer
+			
+			// if the text inside the button that was clicked is the right answer
+			if (event.target.textContent === currentQuestion.answer) {
+				// add to users score
+				userScore = userScore + 10;
+				localStorage.setItem("userScore", userScore);
+				// alert user they were correct/ element appended to the dom/create element/<p>
+				
+				// hide currentQuestions text/remove child
+				
+				questionTextDiv.removeChild(questionTextDiv.firstChild);
+				while (questionTextDiv.hasChildNodes()) {
+					questionTextDiv.removeChild(questionTextDiv.firstChild);
+					// display next question (could call above function if seperate it off
+				}
+				// need code display next question
+				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
+				}
+				//   document.getElementById("#finalScore").innerHTML = "Score: " + userScore;
+				// display scoreboard
+			} else {
+				getNextQuestion();
+			}
+		});
 	}
-  }
-	
- 
- 
+}
+
+
+
+function currentScore () {
+	currentScore.textContent = userScore;
+	localStorage.setItem
+	("userScore", userScore);
+}
+
+
 // 	what to do if youre on your last question, might have to put in a different function/ then it can go to scoreboard screen else loop back to gam
 
 // very last thing what happens when timer runs out?
@@ -170,20 +178,20 @@ function saveUserScores () {
 	var userInitals = prompt("Enter your initals to keep highscore!")
 	var newScore = {score, initals};
 
+	form.addEventListener("submit", logSubmit);
+	
+	function submitInitials (event) {
+	log.textContent = "form submitted!";
+	event.preventDefult();
+	
+	const form = document.getElementById("initialsForm");
+	const log = document.getElementById("log");
+	
+	localStorage.setItem("initials", JSON.stringify(initials));
+	};
 
 };
 
-form.addEventListener("submit", logSubmit);
-
-function submitInitials (event) {
-log.textContent = "form submitted!";
-event.preventDefult();
-
-const form = document.getElementById("initialsForm");
-const log = document.getElementById("log");
-
-localStorage.setItem("initials", JSON.stringify(initials));
-}};
 
 
 
