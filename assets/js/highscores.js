@@ -17,7 +17,7 @@ clearScores.addEventListener("click", reset); {
 	location.reload();
 };
 
-// // event listener click go back button
+// event listener click go back button
 goBack.addEventListener("click", function () {
 	window.location.replace("./index.html")
 });

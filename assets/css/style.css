@@ -2,22 +2,82 @@
 
 body{
 	color: black;
-	background: white;
+	background: rgb(238, 212, 212);
 }
 
-/* .scores-link{
-	color: purple;
-} */
-
-/* .scores-link :hover{
-	color: orangered;
-} */
-
-#quiz-box{
-	display: flex;
-	justify-content: center;
+.scores-link {
+	font-size: 17px;
+	margin: 20px;
 }
 
+.quizTimer {
+	text-align: right;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+#starting-screen {
+	padding: 40px;
+	text-align: center;
+	background: #d39587;
+  }
+
+#starting-screen h1 {
+color: rgb(92, 21, 5);
+font-size: 30px;
+}
+
+#starting-screen p {
+color: rgb(92, 21, 5);
+font-size: 20px;
+}
+
+.questions-screen {
+	padding: 40px;
+	text-align: center;
+	background: #d39587;
+}
+
+.questions-screen h3 {
+color: rgb(92, 21, 5);
+font-size: 30px;
+}
+
+.answer-check {
+padding: 10px;
+text-align: center;
+background: #d39587;
+}
+
+.answer-check p {
+	color: rgb(92, 21, 5);
+	font-size: 25px;
+	}
+
+.currentScore p {
+text-align: left;
+font-size: 17px;
+font-weight: bold;
+color:rgb(92, 21, 5);
+}
+
+#initialsForm {
+	padding: 40px;
+	text-align: center;
+	background: #d39587;
+}
+
+#initialsForm label {
+	color: rgb(92, 21, 5);
+	font-size: 17px;
+}
+
+footer h4 {
+text-align: center;
+font-size: 17px;
+font-weight: bold;
+color:rgb(92, 21, 5);
+}
 
 .hidden {
 	display: none;
