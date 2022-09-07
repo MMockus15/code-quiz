@@ -77,7 +77,9 @@ function startTimer() {
 
 function getNextQuestion() {
 	// add case where if were at the end it terminates
-	
+	if (currentQuestion === 6) {
+		return
+	};
 	// take current screen (start or a questions and hide it also display next screen)
 	// if its the starting sceen thats visable we want it to take section class starting-screen and hide it 
 	if (startScreen.classList.includes !== "hidden") {
@@ -134,17 +136,17 @@ function handleUserAnswer(currentQuestion) {
 				// alert user they were correct/ element appended to the dom/create element/<p>
 				
 				// hide currentQuestions text/remove child
-				
 				questionTextDiv.removeChild(questionTextDiv.firstChild);
 				while (questionTextDiv.hasChildNodes()) {
 					questionTextDiv.removeChild(questionTextDiv.firstChild);
 					// display next question (could call above function if seperate it off
 				}
-				// need code display next question
+				// display next question
 				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 				}
 				//   document.getElementById("#finalScore").innerHTML = "Score: " + userScore;
 				// display scoreboard
+				document.getElementById("currentScore").innerHTML = "Score: " +window.location.href;
 			} else {
 				getNextQuestion();
 			}
@@ -161,24 +163,21 @@ function currentScore () {
 }
 
 
-// 	what to do if youre on your last question, might have to put in a different function/ then it can go to scoreboard screen else loop back to gam
 
 // very last thing what happens when timer runs out?
 
 
 
 function gameOver() {
-	// if (questionsContainer.classList.includes !== "hidden") {
-	// 	questionsContainer.classList.add("hidden");
-	// }
-	// if (answerChoiceDiv.classList.includes !== "hidden") {
-	// 	answerChoiceDiv.classList.add("hidden");
-	// }
-
-	// other game over logic
+	// game over will ppend last page
+	questionTextDiv.innerHTML = "";
+	answerChoiceDiv.innerHTML = "";
+	timerElement.innerHTML = "";
+	
 };
 
 function saveUserScores () {
+	// stores userscore to local storage hen submitting initials
 	localStorage.setItem("userScore", JSON. stringify(userScore));
 	var userInitals = prompt("Enter your initals to keep highscore!")
 	var newScore = {score, initals};
