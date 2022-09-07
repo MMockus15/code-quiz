@@ -14,7 +14,7 @@ var initials = document.querySelector("#initials");
 var submitScoreBtn = document.querySelector('#submitBtn');
 var currentScoreDiv = document.querySelector(".currentScore");
 var initialsForm = document.querySelector(".initialsForm");
-var initialsText = document.querySelector(".initialsText")
+var initialsText = document.querySelector(".initialsText");
 
 
 var timerCount = 60;
@@ -65,9 +65,6 @@ startButton.addEventListener("click", startGame);
 // start game function
 function startGame() {
 	startTimer();
-	if (initialsForm.classList.includes !== "hidden") {
-	  initialsForm.classList.add("hidden");
-	}
 }
 
 function startTimer() {
@@ -94,6 +91,8 @@ function getNextQuestion() {
 	if (startScreen.classList.includes !== "hidden") {
 		startScreen.classList.add("hidden");
 	}
+
+	
 	
 	// clear out any old question choices
 	questionsIndexCounter.textContent = "";
@@ -124,6 +123,7 @@ function getNextQuestion() {
 		// display on the page
 		answerChoiceDiv.appendChild(choiceBtn);
 	}
+	
 	currentScore ();
 	handleUserAnswer(currentQuestion);
 	questionsIndexCounter++;
@@ -151,15 +151,18 @@ function handleUserAnswer(currentQuestion) {
 				questionTextDiv.removeChild(questionTextDiv.firstChild);
 				while (questionTextDiv.hasChildNodes()) {
 					questionTextDiv.removeChild(questionTextDiv.firstChild);
-					// display next question (could call above function if seperate it off
 				}
 				// display next question
 				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 				}
-				// display scoreboard
+				
+				if(questionsIndexCounter = quizQuestions.length){
+				gameOver();
+				}
 			} else {
 				timerCount -= 10;
 				alert("Wrong");
+				
 			} 
 			getNextQuestion();
 		});
@@ -175,19 +178,14 @@ function currentScore () {
 	("userScore", userScore);
 }
 
-
-
-// very last thing what happens when timer runs out?
-
-
-
-// function gameOver() {
-// 	// game over will ppend last page
-// 	questionTextDiv.innerHTML = "";
-// 	answerChoiceDiv.innerHTML = "";
-// 	timerElement.innerHTML = "";
-	
-// };
+function gameOver () {
+	if (currentQuestion = quizQuestions[quizQuestions.length]) {
+		timerCount = 0
+	}
+	if (initialsForm.classList.contains("hidden")) {
+		initialsForm.classList.remove("hidden");
+	  }
+ }
 
 function saveUserScores (event) {
 	event.preventDefault();
