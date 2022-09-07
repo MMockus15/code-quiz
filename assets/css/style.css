@@ -78,6 +78,10 @@ footer h4 {
   font-weight: bold;
 }
 
+.highscoresList {
+	list-style: none;
+}
+
 .hidden {
   display: none;
 }
