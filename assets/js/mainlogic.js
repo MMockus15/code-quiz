@@ -76,6 +76,8 @@ function startTimer() {
 
 
 function getNextQuestion() {
+	// add case where if were at the end it terminates
+	
 	// take current screen (start or a questions and hide it also display next screen)
 	// if its the starting sceen thats visable we want it to take section class starting-screen and hide it 
 	if (startScreen.classList.includes !== "hidden") {
@@ -91,11 +93,14 @@ function getNextQuestion() {
 	// update title with current question
 	var questionH3 = document.createElement("h3");
 	questionH3.textContent = currentQuestion.question;
+	questionTextDiv.innerHTML = "";
 	questionTextDiv.appendChild(questionH3);
 	
-	
+	// empties content of answer choice div
+	answerChoiceDiv.innerHTML = "";
 	// looping over answer choices and turning each one into a button
 	for (var i = 0; i < currentQuestion.choices.length; i++) {
+		
 		// create new button for each choice
 		var choice = currentQuestion.choices[i];
 		var choiceBtn = document.createElement('button');
