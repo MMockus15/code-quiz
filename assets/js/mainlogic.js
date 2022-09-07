@@ -9,11 +9,15 @@ var checkAnswer = document.getElementById("answer-check");
 // var question = quizQuestions[index].question;
 var answerChoiceDiv = document.querySelector(".answer-choices");
 var questionTextDiv = document.querySelector(".question-text");
+// submit score buttons
+var initials = document.querySelector("#initials");
+var submitScoreBtn = document.querySelector('#submitBtn');
 
 
 var timerCount = 60;
 var index = 0;
 var userScore = 0;
+var scoreText;
 var questionsIndexCounter = 0;
 
 var quizQuestions = [
@@ -78,7 +82,7 @@ function getNextQuestion() {
 	}
 
 	// clear out any old question choices
-	// questionsContainer.textContent = "";
+	questionsIndexCounter.textContent = "";
 
 	// get current question object from array
 	var currentQuestion = quizQuestions[questionsIndexCounter];
@@ -103,12 +107,13 @@ function getNextQuestion() {
 	  answerChoiceDiv.appendChild(choiceBtn);
 	}
 	questionsIndexCounter++;
-	handleUserAnswer();
+	handleUserAnswer(currentQuestion);
 };
 
 
 
-function handleUserAnswer() {
+function handleUserAnswer(currentQuestion) {
+
 	var choiceBtns = document.querySelectorAll(".choice");
 	for (var i = 0; i < choiceBtns.length; i++) {
 	  choiceBtns[i].addEventListener("click", function (event) {
@@ -132,6 +137,7 @@ function handleUserAnswer() {
 		  // need code display next question
 		  if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 		  }
+		//   document.getElementById("#finalScore").innerHTML = "Score: " + userScore;
 		  // display scoreboard
 		} else {
 		  getNextQuestion();
@@ -142,28 +148,42 @@ function handleUserAnswer() {
 	
  
  
- 
- 
-	// what to do if youre on your last question, might have to put in a different function/ then it can go to scoreboard screen else loop back to gam
+// 	what to do if youre on your last question, might have to put in a different function/ then it can go to scoreboard screen else loop back to gam
 
 // very last thing what happens when timer runs out?
 
 
 
 function gameOver() {
+	// if (questionsContainer.classList.includes !== "hidden") {
+	// 	questionsContainer.classList.add("hidden");
+	// }
+	// if (answerChoiceDiv.classList.includes !== "hidden") {
+	// 	answerChoiceDiv.classList.add("hidden");
+	// }
+
 	// other game over logic
-	localStorage.setItem("score", userScore);
-	var score = localStorage.getItem("userScore");
-	checkHighScore(account.userScore);
 };
 
 function saveUserScores () {
+	localStorage.setItem("userScore", JSON. stringify(userScore));
 	var userInitals = prompt("Enter your initals to keep highscore!")
 	var newScore = {score, initals};
 
 
-}
+};
 
+form.addEventListener("submit", logSubmit);
+
+function submitInitials (event) {
+log.textContent = "form submitted!";
+event.preventDefult();
+
+const form = document.getElementById("initialsForm");
+const log = document.getElementById("log");
+
+localStorage.setItem("initials", JSON.stringify(initials));
+}};
 
 
 
