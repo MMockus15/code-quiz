@@ -21,9 +21,6 @@ function renderHighscore() {
 	}
 };
 
-
-
-
 // event listener to clear score
 clearScores.addEventListener("click", function() {
 	localStorage.clear();

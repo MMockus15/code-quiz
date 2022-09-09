@@ -183,6 +183,7 @@ function currentScore () {
 function gameOver () {
 	clearInterval(timerInterval);
 	timerElement.style.display = "none";
+	startScreen.classList.add("hidden");
 	if (initialsForm.classList.contains("hidden")) {
 		initialsForm.classList.remove("hidden");
 	  }
@@ -197,7 +198,13 @@ function saveUserScores (event) {
 	localStorage.setItem("highscores", JSON.stringify(highscores));
 
 	window.location = "highscores.html"
-	
+	// So first before we save, we need to check if highscores already exist in local storage.  If they do not exist , we will make a variable for the score as an empty array.
+	// The user’s score will need to be saved to an object that will have their initials, and their score.
+	// What we will be doing then is setting a variable equal to the empty or filled array we get from localstorage.getitem(highscores)
+	// Then we will be pushing the object that has the initials and the score to this variable so that it gets added to the array as a new object.
+	// Then we take that variable and do localStorage.setItem(“highscores”, variable).
+	// It will overwrite our local storage, but the old information will be preserved.
+
 	// local storage . get item turn onto a string stringify jason . parse put inputvalue - navigate to highscores page 
 };
 
