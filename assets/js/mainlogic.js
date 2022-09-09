@@ -24,6 +24,7 @@ var index = 0;
 var userScore = 0;
 var scoreText;
 var questionsIndexCounter = 0;
+var finalScore= [];
 
 var quizQuestions = [
   {
@@ -139,6 +140,10 @@ function handleUserAnswer(currentQuestion) {
 	var choiceBtns = document.querySelectorAll(".choice");
 	for (var i = 0; i < choiceBtns.length; i++) {
 		choiceBtns[i].addEventListener("click", function (event) {
+
+			if(questionsIndexCounter === quizQuestions.length){
+			gameOver();
+			}
 			
 			// if the text inside the button that was clicked is the right answer
 			console.log(event.target.textContent);
@@ -158,9 +163,6 @@ function handleUserAnswer(currentQuestion) {
 				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
 				}
 				
-				if(questionsIndexCounter === quizQuestions.length){
-				gameOver();
-				}
 			} else {
 				timerCount -= 10;
 				alert("Wrong");
@@ -194,18 +196,25 @@ document.querySelector("#submitButton").addEventListener("click", saveUserScores
 function saveUserScores (event) {
 	event.preventDefault();
 	var inputInitials = initialsText.value
-	console.log(inputInitials, userScore)
-	localStorage.setItem("highscores", JSON.stringify(highscores));
-
+	console.log(inputInitials, finalScore)
+	
 	window.location = "highscores.html"
+	
+	
 	// So first before we save, we need to check if highscores already exist in local storage.  If they do not exist , we will make a variable for the score as an empty array.
+	var finalScore= [];
 	// The user’s score will need to be saved to an object that will have their initials, and their score.
+	var saveScores = localStorage.setItem("highscores",(finalScore, inputInitials));
+
 	// What we will be doing then is setting a variable equal to the empty or filled array we get from localstorage.getitem(highscores)
+	var getScores = finalScore;
 	// Then we will be pushing the object that has the initials and the score to this variable so that it gets added to the array as a new object.
+	getScores = saveScores
 	// Then we take that variable and do localStorage.setItem(“highscores”, variable).
 	// It will overwrite our local storage, but the old information will be preserved.
 
 	// local storage . get item turn onto a string stringify jason . parse put inputvalue - navigate to highscores page 
+	// localStorage.getItem.("stringify.JSON.parse");
 };
 
 // form.addEventListener("submit", saveUserScores);
