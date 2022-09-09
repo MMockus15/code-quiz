@@ -6,16 +6,17 @@ var timerElement = document.querySelector("#quizTimer");
 // questions variables
 var questionsContainer = document.getElementById("questions-screen");
 var checkAnswer = document.getElementById("answer-check");
+
 // var question = quizQuestions[index].question;
 var answerChoiceDiv = document.querySelector(".answer-choices");
 var questionTextDiv = document.querySelector(".question-text");
+
 // submit score buttons
-var initials = document.querySelector("#initials");
-var submitScoreBtn = document.querySelector('#submitBtn');
+// var submitScoreBtn = document.querySelector('#submitBtn');
 var currentScoreDiv = document.querySelector(".currentScore");
 var initialsForm = document.querySelector(".initialsForm");
 var initialsText = document.querySelector(".initialsText");
-// var highscores = JSON.parse(localStorage.getItem("highscores"))
+
 
 
 
