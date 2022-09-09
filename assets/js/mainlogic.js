@@ -15,7 +15,7 @@ var submitScoreBtn = document.querySelector('#submitBtn');
 var currentScoreDiv = document.querySelector(".currentScore");
 var initialsForm = document.querySelector(".initialsForm");
 var initialsText = document.querySelector(".initialsText");
-var highscores = JSON.parse(localStorage.getItem("highscores"))
+// var highscores = JSON.parse(localStorage.getItem("highscores"))
 
 
 
