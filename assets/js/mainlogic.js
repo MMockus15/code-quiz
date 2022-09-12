@@ -6,18 +6,13 @@ var timerElement = document.querySelector("#quizTimer");
 // questions variables
 var questionsContainer = document.getElementById("questions-screen");
 var checkAnswer = document.getElementById("answer-check");
-
-// var question = quizQuestions[index].question;
 var answerChoiceDiv = document.querySelector(".answer-choices");
 var questionTextDiv = document.querySelector(".question-text");
 
 // submit score buttons
-// var submitScoreBtn = document.querySelector('#submitBtn');
 var currentScoreDiv = document.querySelector(".currentScore");
 var initialsForm = document.querySelector(".initialsForm");
 var initialsText = document.querySelector(".initialsText");
-
-
 
 
 var timerCount = 60;
@@ -25,7 +20,7 @@ var index = 0;
 var userScore = 0;
 var scoreText;
 var questionsIndexCounter = 0;
-var finalScore= [];
+
 
 var quizQuestions = [
   {
@@ -63,9 +58,6 @@ var quizQuestions = [
 // click start button and starts game
 startButton.addEventListener("click", startGame);
 
-
-
-
 // start game function
 function startGame() {
 	startTimer();
@@ -84,7 +76,6 @@ timerInterval = setInterval(function () {
   getNextQuestion();
 }
 
-
 function getNextQuestion() {
 	// hides questions container after last question
 	if (questionsIndexCounter === 6) {
@@ -96,8 +87,6 @@ function getNextQuestion() {
 		startScreen.classList.add("hidden");
 	}
 
-	
-	
 	// clear out any old question choices
 	questionsIndexCounter.textContent = "";
 	
@@ -133,8 +122,6 @@ function getNextQuestion() {
 	questionsIndexCounter++;
 };
 
-
-
 function handleUserAnswer(currentQuestion) {
 	
 	// moving thru choice buttons and creating event listener for each one
@@ -153,34 +140,33 @@ function handleUserAnswer(currentQuestion) {
 				userScore += 10;
 				console.log(userScore);
 				currentScore();
-				alert("Correct");
-				
-				// hide currentQuestions text/remove child
-				questionTextDiv.removeChild(questionTextDiv.firstChild);
-				while (questionTextDiv.hasChildNodes()) {
-					questionTextDiv.removeChild(questionTextDiv.firstChild);
-				}
-				// display next question
-				if ((currentQuestion = quizQuestions[quizQuestions.length - 1])) {
-				}
+				var correctEl = document.createElement("div");
+				correctEl.textContent = "correct"
+				checkAnswer.append(correctEl);
+			
 				
 			} else {
 				timerCount -= 10;
-				alert("Wrong");
+				var wrongEl = document.createElement("div");
+				wrongEl.textContent = "wrong"
+				checkAnswer.append(wrongEl);
 				
 			} 
 			getNextQuestion();
+			setTimeout(function(){
+				checkAnswer.removeChild(wrongEl)
+				
+
+			},700)
+			
 		});
 	}
 }
 
 
-
 function currentScore () {
 	console.log(userScore);
 	currentScoreDiv.textContent = "Score: " + userScore;
-	localStorage.setItem
-	("userScore", userScore);
 }
 
 function gameOver () {
@@ -192,33 +178,21 @@ function gameOver () {
 	  }
  }
 
-document.querySelector("#submitButton").addEventListener("click", saveUserScores)
-
 function saveUserScores (event) {
 	event.preventDefault();
+	var finalScore = JSON.parse(window.localStorage.getItem("highScores")) || [];
 	var inputInitials = initialsText.value
-	console.log(inputInitials, finalScore)
 	
+	var score = {
+		initials:inputInitials,
+		userScore,
+	}
+	finalScore.push(score);
+	localStorage.setItem("highScores", JSON.stringify(finalScore));
 	window.location = "highscores.html"
-	
-	
-	// So first before we save, we need to check if highscores already exist in local storage.  If they do not exist , we will make a variable for the score as an empty array.
-	var finalScore= [];
-	// The user’s score will need to be saved to an object that will have their initials, and their score.
-	var saveScores = localStorage.setItem("highscores",(finalScore, inputInitials));
-
-	// What we will be doing then is setting a variable equal to the empty or filled array we get from localstorage.getitem(highscores)
-	var getScores = finalScore;
-	// Then we will be pushing the object that has the initials and the score to this variable so that it gets added to the array as a new object.
-	getScores = saveScores
-	// Then we take that variable and do localStorage.setItem(“highscores”, variable).
-	// It will overwrite our local storage, but the old information will be preserved.
-
-	// local storage . get item turn onto a string stringify jason . parse put inputvalue - navigate to highscores page 
-	// localStorage.getItem.("stringify.JSON.parse");
 };
 
-// form.addEventListener("submit", saveUserScores);
+initialsForm.addEventListener("submit", saveUserScores);
 
 
 
