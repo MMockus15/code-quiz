@@ -154,8 +154,8 @@ function handleUserAnswer(currentQuestion) {
 			} 
 			getNextQuestion();
 			setTimeout(function(){
-				checkAnswer.removeChild(wrongEl)
-				checkAnswer.removeChild(correctEl)
+				checkAnswer.children[0].remove(wrongEl);
+				checkAnswer.children[0].remove(correctEl);
 				
 
 			},700)
