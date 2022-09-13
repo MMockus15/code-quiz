@@ -155,6 +155,7 @@ function handleUserAnswer(currentQuestion) {
 			getNextQuestion();
 			setTimeout(function(){
 				checkAnswer.removeChild(wrongEl)
+				checkAnswer.removeChild(correctEl)
 				
 
 			},700)
